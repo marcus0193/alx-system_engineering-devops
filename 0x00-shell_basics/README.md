@@ -1,1 +1,2 @@
-the 0-current_working_directory script print the current working directory
+the 0-current working directory script print the current working directory
+the 1-listit script list the content of the cuurent directory
