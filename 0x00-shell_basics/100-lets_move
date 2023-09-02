@@ -1,2 +1,2 @@
 #!/bin/bash
-mv * src/*[a-z]* target/ /tmp/u
+find -name '[A-Z]*' -execdir  mv /tmp/u {} +
