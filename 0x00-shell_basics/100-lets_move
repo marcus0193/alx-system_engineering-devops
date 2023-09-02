@@ -1,2 +1,2 @@
 #!/bin/bash
-find -name '[A-Z]*' -execdir  mv /tmp/u {} +
+find -name '[A-Z]*' -execdir  mv ~/tmp/u {} +
