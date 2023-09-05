@@ -1,2 +1,2 @@
 #!/bin/bash
-head -n 4 iacta.txt | tail -n + 4
+head -3 iacta.txt | tail -1

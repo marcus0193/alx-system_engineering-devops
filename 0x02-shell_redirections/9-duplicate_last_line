@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n 1 iacta.txt >> iacta.txt
+tail -n 1 iacta >> iacta.txt
