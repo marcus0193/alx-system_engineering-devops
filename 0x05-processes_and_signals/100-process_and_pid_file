@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+echo $$ > /var/run/myscript.pid
+
+when_sigint()
+{
+echo "Y U no love me?!"
+exit
+}
+
+when_sigterm()
+{
+echo "I hate the kill command"
+rm -f /var/run/myscript.pid
+exit
+}
+
+when_sigquit()
+{
+rm -f /var/run/myscript.pid
+exit
+}
+
+trap 'when_sigint' SIGINT
+trap 'when_sigterm' SIGTERM
+trap 'when_sigquit' SIGQUIT
+
+while true; do
+echo "To infinity and beyond!"
+sleep 1
+done

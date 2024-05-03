@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+num7_pid=$(pgrep -f '7-highlander')
+if [[ -n $num7_pid ]]; then
+kill -9 "$num7_pid"
+fi
