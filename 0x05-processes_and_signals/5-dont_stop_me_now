@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+num4_pid=$(pgrep -f '4-to_infinity_and_beyond')
+if [[ -n $num4_pid ]]; then
+	kill "$num4_pid"
+fi
