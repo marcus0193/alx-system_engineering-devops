@@ -5,7 +5,6 @@ echo $$ > /var/run/myscript.pid
 when_sigint()
 {
 echo "Y U no love me?!"
-exit
 }
 
 when_sigterm()
