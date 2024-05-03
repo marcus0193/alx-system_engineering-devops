@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-
+# creates file with its pid, display a word infinity and output command when SIGTERM and output when SIGQUIT.
 echo $$ > /var/run/myscript.pid
 
 when_sigint()
@@ -26,6 +26,6 @@ trap 'when_sigterm' SIGTERM
 trap 'when_sigquit' SIGQUIT
 
 while true; do
-echo "To infinity and beyond!"
-sleep 1
+	echo "To infinity and beyond!"
+	sleep 1
 done

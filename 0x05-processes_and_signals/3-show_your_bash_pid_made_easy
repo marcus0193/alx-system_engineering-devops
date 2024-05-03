@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Bash script that displays the PID, along with the process name for any bash process
 for pid in /proc/[0-9]*; do
 	if grep -q bash "$pid/comm"; then
 		echo "$(basename "$pid") $(<"$pid/comm")"
