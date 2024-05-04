@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # creates file with its pid, display a word infinity and output command when SIGTERM and output when SIGQUIT.
 echo $$ > /var/run/myscript.pid
 
