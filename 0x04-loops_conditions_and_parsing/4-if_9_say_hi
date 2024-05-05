@@ -5,6 +5,7 @@ while [ $end -le 10 ]
 do
 	if [ $end -eq 9 ]
 	then
+		echo "Best School"
 		echo "Hi"
 	else
 		echo "Best School"
