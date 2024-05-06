@@ -6,8 +6,8 @@ FILE=/alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
 case "$1" in
     start)
         echo "manage_my_process started"
-	if [! -f $PIDFILE ]; then
-		nohup $FILE > /dev/null 2>&1 &
+	if [ ! -f $PIDFILE ]; then
+		$FILE > /dev/null 2>&1 &
         	echo $! > $PIDFILE
 	fi
         ;;
@@ -19,10 +19,15 @@ case "$1" in
             rm -f $PIDFILE
         fi
         ;;
-    restart)    
-	echo "manage_my_process restarted"
-        $0 stop
-	$0 start
+    restart)
+	    echo "manage_my_process restarted"
+	    if [ -f $PIDFILE ]; then
+		    PID=$(cat $PIDFILE)
+		    kill "$PID"
+		    rm -f $PIDFILE
+	    fi
+	$FILE > /dev/null 2>&1 &
+        echo $! > $PIDFILE
         ;;
     *)
         echo "Usage: manage_my_process {start|stop|restart}"
