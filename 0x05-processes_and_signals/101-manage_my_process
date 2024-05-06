@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Bash script that manages manage_my_process
-FILE=/tmp/my_process
+FILE=/alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
 PIDFILE=/var/run/my_process.pid
 
 case "$1" in
