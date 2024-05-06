@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 # Bash script that manages manage_my_process
-PIDFILE=/tmp/my_process.pid
-FILE=/alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
+FILE=/tmp/my_process
+PIDFILE=/var/run/my_process.pid
 
 case "$1" in
     start)
+        bash -c "while true; do echo 'I am alive!' >> $FILE; sleep 2; done" &
+        echo $! > $PIDFILE
         echo "manage_my_process started"
-	if [! -f $PIDFILE ]; then
-		nohup $FILE > /dev/null 2>&1 &
-        	echo $! > $PIDFILE
-	fi
         ;;
     stop)
         echo "manage_my_process stopped"
@@ -17,12 +15,18 @@ case "$1" in
             PID=$(cat $PIDFILE)
             kill "$PID"
             rm -f $PIDFILE
+	    rm -f $FILE
         fi
         ;;
     restart)    
 	echo "manage_my_process restarted"
-        $0 stop
-	$0 start
+        if [ -f $PIDFILE ]; then
+            PID=$(cat $PIDFILE)
+            kill "$PID"
+            rm -f $PIDFILE
+        fi
+        bash -c "while true; do echo 'I am alive!' >> $FILE; sleep 2; done" &
+        echo $! > $PIDFILE
         ;;
     *)
         echo "Usage: manage_my_process {start|stop|restart}"
