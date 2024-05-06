@@ -1,39 +1,31 @@
 #!/usr/bin/env bash
 # Bash script that manages manage_my_process
-PIDFILE=/tmp/my_process.pid
-FILE=/alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
+FILE=/tmp/my_process
+PIDFILE=/var/run/my_process.pid
 
-do_start() {
-	$FILE &
-	echo $! > $PIDFILE
-        echo "manage_my_process started"
-}
-
-do_stop() {
-	echo "manage_my_process stopped"
-	if [ -f $PIDFILE ]; then
-		PID=$(cat $PIDFILE)
-		kill "$PID"
-		rm -f $PIDFILE
-        fi
-}
 case "$1" in
     start)
-	if [ ! -f $PIDFILE ]; then
-		do_start
-	fi
+        bash -c "while true; do echo 'I am alive!' >> $FILE; sleep 2; done" &
+        echo $! > $PIDFILE
+        echo "manage_my_process started"
         ;;
     stop)
-	    do_stop
+        echo "manage_my_process stopped"
+        if [ -f $PIDFILE ]; then
+            PID=$(cat $PIDFILE)
+            kill "$PID"
+            rm -f $PIDFILE
+	    rm -f $FILE
+        fi
         ;;
-    restart)
-	    echo "manage_my_process restarted"
-	    if [ -f $PIDFILE ]; then
-		    PID=$(cat $PIDFILE)
-		    kill "$PID"
-		    rm -f $PIDFILE
-	    fi
-	$FILE > /dev/null 2>&1 &
+    restart)    
+	echo "manage_my_process restarted"
+        if [ -f $PIDFILE ]; then
+            PID=$(cat $PIDFILE)
+            kill "$PID"
+            rm -f $PIDFILE
+        fi
+        bash -c "while true; do echo 'I am alive!' >> $FILE; sleep 2; done" &
         echo $! > $PIDFILE
         ;;
     *)
