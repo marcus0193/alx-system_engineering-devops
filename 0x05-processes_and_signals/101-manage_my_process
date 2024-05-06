@@ -3,21 +3,28 @@
 PIDFILE=/tmp/my_process.pid
 FILE=/alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
 
+do_start() {
+	$FILE &
+	echo $! > $PIDFILE
+        echo "manage_my_process started"
+}
+
+do_stop() {
+	echo "manage_my_process stopped"
+	if [ -f $PIDFILE ]; then
+		PID=$(cat $PIDFILE)
+		kill "$PID"
+		rm -f $PIDFILE
+        fi
+}
 case "$1" in
     start)
-        echo "manage_my_process started"
 	if [ ! -f $PIDFILE ]; then
-		$FILE > /dev/null 2>&1 &
-        	echo $! > $PIDFILE
+		do_start
 	fi
         ;;
     stop)
-        echo "manage_my_process stopped"
-        if [ -f $PIDFILE ]; then
-            PID=$(cat $PIDFILE)
-            kill "$PID"
-            rm -f $PIDFILE
-        fi
+	    do_stop
         ;;
     restart)
 	    echo "manage_my_process restarted"
