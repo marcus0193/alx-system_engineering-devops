@@ -10,11 +10,12 @@ case "$1" in
         echo "manage_my_process started"
         ;;
     stop)
+        echo "manage_my_process stopped"
         if [ -f $PIDFILE ]; then
             PID=$(cat $PIDFILE)
-            kill $PID
+            kill -9 $PID
             rm -f $PIDFILE
-            echo "manage_my_process stopped"
+	    rm -f $FILE
         fi
         ;;
     restart)    
@@ -28,7 +29,7 @@ case "$1" in
         echo $! > $PIDFILE
         ;;
     *)
-        echo "Usage: $0 {start|stop|restart}"
+        echo "Usage: manage_my_process {start|stop|restart}"
         exit 1
         ;;
 esac
