@@ -10,4 +10,6 @@ if match_string
   match_data = match_string[0]
   t_part = match_data.scan(/t+/).join
   puts "hb#{t_part}n"
+else
+  pust "$"
 end
