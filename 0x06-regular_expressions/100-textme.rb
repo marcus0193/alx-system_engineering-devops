@@ -10,5 +10,5 @@ flags_regex = /\[flags:(.+?)\]/
 sender = test_string.match(sender_regex)[1]
 receiver = test_string.match(receiver_regex)[1]
 flags = test_string.match(flags_regex)[1]
-puts "#{sender},#{receiver},#{flags}"
-puts "$\n"
+print "#{sender},#{receiver},#{flags}$\n"
+print "$\n"
