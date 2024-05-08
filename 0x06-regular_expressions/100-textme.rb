@@ -11,5 +11,3 @@ sender = test_string.match(sender_regex)[1]
 receiver = test_string.match(receiver_regex)[1]
 flags = test_string.match(flags_regex)[1]
 print "#{sender},#{receiver},#{flags}\n"
-puts "$\n"
-puts "$\n"
