@@ -12,4 +12,3 @@ receiver = test_string.match(receiver_regex)[1]
 flags = test_string.match(flags_regex)[1]
 puts "#{sender},#{receiver},#{flags}"
 puts "$\n"
-puts "$\n"
