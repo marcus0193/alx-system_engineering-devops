@@ -9,7 +9,5 @@ match_string = test_string.match(regex)
 if match_string
   match_data = match_string[0]
   b_part = match_data.scan(/b+/).join
-  puts "h#{b_part}tn"
-else
-  puts "$"
+  puts "h#{b_part}tn" if b_part.length <= 3
 end
