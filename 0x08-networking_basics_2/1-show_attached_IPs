@@ -3,6 +3,6 @@
 
 for ip in $(hostname -I); do
 	if [[ $ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9] ]]; then
-		echo $ip$
+		echo $ip
 	fi
 done
