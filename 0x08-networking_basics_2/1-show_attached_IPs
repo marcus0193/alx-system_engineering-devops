@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Bash script that displays all active IPv4 IPs on the machine it’s executed on.
+
+for ip in $(hostname -I); do
+	if [[ $ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9] ]]; then
+		echo $ip$
+	fi
+done
