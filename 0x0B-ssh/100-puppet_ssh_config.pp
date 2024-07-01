@@ -1,11 +1,7 @@
-file_line { 'Turn off passwd auth':
-  path  => '~/.ssh/config',
-  line  => 'PasswordAuthentication no',
-  match => '^PasswordAuthentication',
-}
-
-file_line { 'Declare identity file':
-  path  => '~/.ssh/config',
-  line  => 'IdentityFile ~/.ssh/school',
-  match => '^IdentityFile',
+file { '~/.ssh/config':
+  ensure => present,
+  content => "Host *\n  IdentityFile ~/.ssh/school\n  PasswordAuthentication no\n",
+  owner   => 'vagrant',
+  group   => 'vagrant',
+  mode    => '0600',
 }
