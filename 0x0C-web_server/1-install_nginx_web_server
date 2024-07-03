@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# script that configures a new Ubuntu machine to querying Nginx at its root / with a GET request
+echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
+# Restart Nginx (without using systemctl)
+sudo service nginx restart
+curl -s http://localhost | grep -q "Hello World!"
