@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script that automate your fix by configures a server
+sudo fuser -k 80/tcp
+sudo service nginx restart
