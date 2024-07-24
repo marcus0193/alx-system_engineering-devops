@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 MYSQL_ROOT_PASSWORD=$1
-mysqldump -u root -p"$MYSQL_ROOT_PASSWORD" -h 127.0.0.1 --all-databases > backup.sql
+mysqldump -u root -p"$MYSQL_ROOT_PASSWORD" -h 127.0.0.1 -P 3308 --all-databases > backup.sql
 CURRENT_DATE=$(date +%d-%m-%Y)
 tar -czvf "$CURRENT_DATE.tar.gz" backup.sql
 rm backup.sql
